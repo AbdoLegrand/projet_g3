@@ -55,23 +55,23 @@
 
         </p>
         <form action="" method="POST">
-        <label>code</label>
+        <label>Code</label>
         <input type="number" name="code">
         <label>Nom</label>
         <input type="text" name="nom">
-        <label>prenom</label>
+        <label>Prénom</label>
         <input type="text" name="prenom">
-        <label>date_naiss</label>
+        <label>Date de naissance</label>
         <input type="text" name="Date_naiss">
-        <label>lieu_naiss</label>
+        <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
-        <label>login</label>
+        <label>Login</label>
         <input type="text" name="login">
-        <label>pwd</label>
+        <label>Mot de passe </label>
         <input type="text" name="pwd">
-        <label>id_role</label>
+        <label>Rôle</label>
         <input type="text" name="id_role">
-        <label>active</label>
+        <label>Active</label>
         <input type="text" name="active">
         <input type="submit" value="ajouteur" name="button">
         </form>
