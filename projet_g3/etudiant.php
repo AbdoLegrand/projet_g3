@@ -17,17 +17,15 @@
             <table >
                 <tr id="items">
                     <th>Matricule</th>
-                    <th>Semestre</th>
-                    <th>Année</th>
+                    
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Date de naissance</th>
                     <th>Lieu de naissance</th>
-                    <th>Login</th>
-                    <th>Mot de passe</th>
-                    <th>Rôle</th>
-                    <th>Active</th>
-                    <th colspan="2">action</th>
+                    <th>Date de naissance</th>
+                    <th>Semestre</th>
+                    <th>Année</th>
+                    <th>E-mail</th>
+                    <th colspan="2">Action</th>
                 </tr>
                 <?php 
                     include_once "connexion.php";
@@ -47,11 +45,8 @@
                                 <td><?=$row['Date_naiss']?></td>
                                 <td><?=$row['lieu_naiss']?></td>
                                 <td><?=$row['login']?></td>
-                                <td><?=$row['pwd']?></td>
-                                <td><?=$row['id_role']?></td>
-                                <td><?=$row['active']?></td>
                                 <td><a href="modifier_etudiant.php?id_etud=<?=$row['id_etud']?>"><img title="Modifier" class="img" src="images/pen.png"></a></td>
-                                <td><a href="supprimer_etudiant.php?id_etud=<?=$row['id_etud']?>"onclick="return confirm(`voulez-vous vraiment supprimé cet equipe ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
+                                <td><a href="supprimer_etudiant.php?id_etud=<?=$row['id_etud']?>"onclick="return confirm(`voulez-vous vraiment supprimé ce etudiant ?`)"><img title="Supprime" class="img" src="images/trash.png"></a></td>
                             </tr>
                             <?php
                         }

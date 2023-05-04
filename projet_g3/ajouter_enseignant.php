@@ -26,7 +26,7 @@
         $Date_naiss = test_input($_POST['Date_naiss']); 
         $lieu_naiss =  test_input($_POST['lieu_naiss']);
         $login =  test_input($_POST['login']);
-        $pwd =  test_input($_POST['pwd']);
+        $pwd =  md5(test_input($_POST['pwd']));
         $id_role =  test_input($_POST['id_role']);
         $active =  test_input($_POST['active']);
            if( isset($code) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($pwd) && isset($id_role) && isset($active) ){

@@ -37,9 +37,9 @@
         // $id_role =  test_input($_POST['id_role']);
         // $active =  test_input($_POST['active']);
         if(isset($_POST['button'])){ 
-            extract($_POST);
-        if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($pwd) && isset($id_role) && isset($active) ){
-            $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom' , prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login', pwd = '$pwd', id_role = '$id_role', active = '$active' WHERE id_etud = $id_etud");
+            test_input(extract($_POST));
+        if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) ){
+            $req = mysqli_query($conn, "UPDATE etudiant SET  matricule = '$matricule' , semestre = '$semestre' , annee = '$annee' , nom = '$nom' , prenom = '$prenom', Date_naiss = '$Date_naiss', lieu_naiss = '$lieu_naiss', login = '$login' WHERE id_etud = $id_etud");
             if($req){
                 header("location: etudiant.php");
             }else {
@@ -55,7 +55,7 @@
 
         <div class="form">
         <a href="les_joueurs.php" class="back_btn"><img src="images/back.png"> Retour</a>
-        <h2 class="title_joueur">Modifier l'etudiant : <?=$row['id_etud']?> </h2>
+        <h2 class="title_joueur">Modifier l'etudiant : <?=$row['nom']?> </h2>
         <p class="erreur_message">
         <?php 
             if(isset($message)){
@@ -73,19 +73,13 @@
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss" value="<?=$row['lieu_naiss']?>">
         <label>Date de naissance</label>
-        <input type="text" name="Date_naiss" value="<?=$row['Date_naiss']?>">
+        <input type="date" name="Date_naiss" value="<?=$row['Date_naiss']?>">
         <label>Semestre</label>
         <input type="text" name="semestre"  value="<?=$row['semestre']?>">
         <label>Année</label>
         <input type="text" name="annee"  value="<?=$row['annee']?>">
-        <label>Login</label>
-        <input type="text" name="login" value="<?=$row['login']?>">
-        <label>Mot de passe</label>
-        <input type="text" name="pwd" value="<?=$row['pwd']?>">
-        <label>Rôle</label>
-        <input type="text" name="id_role" value="<?=$row['id_role']?>">
-        <label>Active</label>
-        <input type="text" name="active" value="<?=$row['active']?>">
+        <label>E-mail</label>
+        <input type="email" name="login" value="<?=$row['login']?>">
         <input type="submit" value="Modifier" name="button">
         </form>
     </div>

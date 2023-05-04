@@ -10,7 +10,7 @@
 <body>
     <div class="content">
     <?php
-              include_once "connexion.php";
+              include("connexion.php");
             function test_input($data){
                 $data = htmlspecialchars($data);
                 $data = trim($data);
@@ -22,21 +22,23 @@
 
        if(isset($_POST['button'])){
                 $matricule = test_input($_POST['matricule']);
+                $nom = test_input($_POST['nom']);
+                $prenom = test_input($_POST['prenom']); 
                 $semestre = test_input($_POST['semestre']);
                 $annee = test_input($_POST['annee']);
-                $nom =  test_input($_POST['nom']);
-                $prenom = test_input($_POST['prenom']); 
-                $Date_naiss = test_input($_POST['date_naiss']); 
+                $Date_naiss = test_input($_POST['Date_naiss']); 
                 $lieu_naiss =  test_input($_POST['lieu_naiss']);
                 $login =  test_input($_POST['login']);
-                $pwd =  test_input($_POST['pwd']);
-                $id_role =  test_input($_POST['id_role']);
-                $active =  test_input($_POST['active']);
-           if( isset($matricule) && isset($semestre)  && isset($annee) && isset($nom) && isset($prenom) && isset($Date_naiss) && isset($lieu_naiss)  && isset($login) && isset($pwd) && isset($id_role) && isset($active) ){
-                $req = "INSERT INTO etudiant( `matricule`, `nom`, `prenom`, `lieu_naiss`, `Date_naiss`, `semestre`, `annee`, `login`, `pwd`, `id_role`, `active`) VALUES('$matricule', '$nom','$prenom', '$lieu_naiss','$Date_naiss', '$semestre', '$annee','$login','$pwd','$id_role','$active')";
+                //extract($_POST);
+                if( isset($matricule) && isset($nom) && isset($prenom) && isset($lieu_naiss)  && isset($Date_naiss)){
+                $req = "INSERT INTO etudiant (`matricule`, `nom`, `prenom`, `lieu_naiss`, `Date_naiss`) VALUES('$matricule','$nom','$prenom','$lieu_naiss','$Date_naiss')";
+                // && isset($semestre)  && isset($annee)  && isset($login)
+                //, `semestre`, `annee`, `login`,`id_role`
+                //, '$semestre', '$annee','$login',2
+
                 $req = mysqli_query($conn , $req);
                 if($req){
-                    header("location: etudiant.php.php");
+                    header("location:etudiant.php");
                 }else {
                     $message = "etudiant non ajouté";
                 }
@@ -59,29 +61,24 @@
 
         </p>
         <form action="" method="POST">
+        
         <label>Matricule</label>
         <input type="number" autocomplete="off" name="matricule">
         <label>Nom</label>
         <input type="text" name="nom">
         <label>Prénom</label>
         <input type="text" name="prenom">
-        <label>Date de naissance</label>
-        <input type="text" name="date_naiss">
         <label>Lieu de naissance</label>
         <input type="text" name="lieu_naiss">
+        <label>Date de naissance</label>
+        <input type="text" name="Date_naiss">
         <label>Semestre</label>
         <input type="text" name="semestre">
         <label>Année</label>
         <input type="text" name="annee">
-        <label>Login</label>
-        <input type="text" name="login">
-        <label>Mot de passe</label>
-        <input type="password" name="pwd">
-        <label>Rôle</label>
-        <input type="text" name="id_role">
-        <label>Active</label>
-        <input type="text" name="active">
-        <input type="submit" value="ajouteur" name="button">
+        <label>E-mail</label>
+        <input type="email" name="login">
+        <input type="submit" value="Ajouteur" name="button">
         </form>
    </div>
     </div>
